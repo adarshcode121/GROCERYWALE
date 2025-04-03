@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include("email.php");
@@ -46,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_close($conn);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,21 +54,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Email</title>
     <style>
-       body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
-    font-family: "Poppins", sans-serif;
-    position: relative;
-    background-image: url("Ad_img/background_popup.png");
-    background-size: contain; /* Image ko bina zoom kiye pura dikhane ke liye */
-    background-repeat: no-repeat;
-    background-position: center center;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+            font-family: "Poppins", sans-serif;
+            position: relative;
+            background-image: url("Ad_img/background_popup.png");
+            background-size: contain;
+            /* Image ko bina zoom kiye pura dikhane ke liye */
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
 
 
         /* Background brightness effect (Dimmed background) */
