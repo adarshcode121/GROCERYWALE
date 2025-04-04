@@ -24,147 +24,124 @@ $result = mysqli_query($conn, $order_query);
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Orders</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            padding-top: 60px;
-            text-align: center;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        padding-top: 60px;
+        text-align: center;
+    }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 30px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 30px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        /* Scrollable Order Section */
-        .orders-wrapper {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
+    .orders-wrapper {
+        width: 100%;
+    }
 
-        .orders-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            white-space: nowrap;
-            padding-bottom: 10px;
-        }
+    .orders-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px 0;
+    }
 
-        .order {
-            flex: 0 0 auto;
-            width: 300px;
-            margin: 10px;
-            padding: 15px;
-            border-radius: 8px;
-            background: #fafafa;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            vertical-align: top;
-            text-align: left;
-        }
+    .order {
+    flex: 0 0 calc(33.33% - 20px);
+    width: 300px;
+    min-height: 320px; /* ⬅️ Yeh line add karo ya badhao */
+    padding: 15px;
+    border-radius: 8px;
+    background: #fafafa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    text-align: left;
+}
 
-        .order:nth-child(even) {
-            background: #f0f8ff;
-        }
 
-        .status {
-            padding: 5px 12px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 12px;
-        }
+    .order:nth-child(even) {
+        background: #f0f8ff;
+    }
 
-        .status.Pending {
-            background: #ffc107;
-            color: #fff;
-        }
+    .status {
+        padding: 5px 12px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        position: absolute;
+        bottom: 10px;
+        left: 15px;
+    }
 
-        .status.Processing {
-            background: #17a2b8;
-            color: #fff;
-        }
+    .status.Pending {
+        background: #ffc107;
+        color: #fff;
+    }
 
-        .status.Shipped {
-            background: #007bff;
-            color: #fff;
-        }
+    .status.Processing {
+        background: #17a2b8;
+        color: #fff;
+    }
 
-        .status.Delivered {
-            background: #28a745;
-            color: #fff;
-        }
+    .status.Shipped {
+        background: #007bff;
+        color: #fff;
+    }
 
-        .status.Cancelled {
-            background: #dc3545;
-            color: #fff;
-        }
+    .status.Delivered {
+        background: #28a745;
+        color: #fff;
+    }
 
-        .payment-status {
-            padding: 5px 12px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 12px;
-        }
+    .status.Cancelled {
+        background: #dc3545;
+        color: #fff;
+    }
 
-        .payment-status.Paid {
-            background: #28a745;
-            color: #fff;
-        }
+    .cancel-btn {
+        padding: 5px 12px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+        background: #dc3545;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
 
-        .payment-status.Failed {
-            background: #dc3545;
-            color: #fff;
-        }
+    .head_name {
+        margin-left: 450px;
+    }
+</style>
 
-        /* Scroll Buttons */
-        .scroll-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            color: black;
-            border: none;
-            font-size: 24px;
-            padding: 6px;
-            cursor: pointer;
-            border-radius: 100px;
-            z-index: 10;
-            transition: 0.3s;
-        }
-
-        .scroll-left {
-            left: 10px;
-        }
-
-        .scroll-right {
-            right: 10px;
-        }
-        .head_name{
-            margin-left: 450px;
-        }
-    </style>
 </head>
 
 <body>
@@ -173,9 +150,7 @@ $result = mysqli_query($conn, $order_query);
     </div>
 
     <div class="container orders-wrapper">
-        <button class="scroll-btn scroll-left" onclick="scrollProducts(-300)">&#10094;</button>
-
-        <div class="orders-container" id="productContainer">
+        <div class="orders-container">
             <?php if (mysqli_num_rows($result) > 0): ?>
                 <?php while ($order = mysqli_fetch_assoc($result)): ?>
                     <div class="order">
@@ -190,14 +165,18 @@ $result = mysqli_query($conn, $order_query);
                         <span class="status <?php echo htmlspecialchars($order['status']); ?>">
                             <?php echo htmlspecialchars($order['status']); ?>
                         </span>
+                        <?php if ($order['status'] != 'Cancelled' && $order['status'] != 'Delivered'): ?>
+                            <form method="POST" action="cancel_order.php" style="display:inline;">
+                                <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
+                                <button type="submit" class="cancel-btn">Cancel</button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
                 <p style="text-align:center; color:#555;">No orders found.</p>
             <?php endif; ?>
         </div>
-
-        <button class="scroll-btn scroll-right" onclick="scrollProducts(300)">&#10095;</button>
     </div>
 
     <script>
