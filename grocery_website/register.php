@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_query($conn, $otp_query);
 
     // Send OTP to email
-    send_otp($email, "Your OTP Code", $otp);
+    send_otp($email, "Welcome to GroceryWale . \n Your OTP Code", $otp);
 
     $_SESSION['user_id'] = $user_id;
     $_SESSION['email'] = $email;

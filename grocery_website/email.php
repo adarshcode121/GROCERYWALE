@@ -42,7 +42,7 @@ function send_otp($to, $subject, $content)
         $mail->Subject = $subject;
         $mail->Body    = "<font color='white' size='3'>
                             Please use OTP " . $content . " to login to your GroceryWale
-                            account and shop from our wide array of products. This OTP is Valid For Only One Time.
+                            account and shop from our wide array of products. \n This OTP is Valid For Only One Time.
                             </font>";
 
         // Send the email

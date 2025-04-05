@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Order details in email
         $orderDetails = "<h2>Thank you for your purchase, $name!</h2>
-            <p>Your payment has been successfully processed.<br> Here are your order details:</p>
+            <p>Your payment has been successfully processed. \n Here are your order details:</p>
             <ul>
                 <li><strong>Order ID:</strong> $order_id</li>
                 <li><strong>Payment ID:</strong> $payment_id</li>
