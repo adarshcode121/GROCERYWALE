@@ -43,7 +43,7 @@ $total_price = 0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Bill - Flipkart Style</title>
+    <title>Order Billing</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -241,7 +241,7 @@ $total_price = 0;
             "key": "rzp_test_oFL88BWKa4IHEK", // Replace with your Razorpay Key
             "amount": amount,
             "currency": "INR",
-            "name": "Silvassa Mart",
+            "name": "GroceryWale",
             "description": "Payment for your purchase",
             "image": "https://via.placeholder.com/150", // Replace with your logo URL
             "prefill": {
