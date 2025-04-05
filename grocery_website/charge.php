@@ -76,12 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->Port = 587;
 
         // Recipients
-        $mail->setFrom('demowork10001@gmail.com', 'E-commerce Website');
+        $mail->setFrom('demowork10001@gmail.com', 'GroceryWale');
         $mail->addAddress($email, $name); // Add user's email address here
 
         // Order details in email
         $orderDetails = "<h2>Thank you for your purchase, $name!</h2>
-            <p>Your payment has been successfully processed. Here are your order details:</p>
+            <p>Your payment has been successfully processed.<br> Here are your order details:</p>
             <ul>
                 <li><strong>Order ID:</strong> $order_id</li>
                 <li><strong>Payment ID:</strong> $payment_id</li>

@@ -41,7 +41,7 @@ function send_otp($to, $subject, $content)
         $mail->isHTML(true);                                         // Set email format to HTML
         $mail->Subject = $subject;
         $mail->Body    = "<font color='white' size='3'>
-                            <#> Please use OTP " . $content . " to login to your Silvassa-mart (formerly grofers) 
+                            Please use OTP " . $content . " to login to your GroceryWale
                             account and shop from our wide array of products. This OTP is Valid For Only One Time.
                             </font>";
 
